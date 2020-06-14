@@ -1,7 +1,8 @@
 (ns gridworld.core
   (:gen-class))
 
+;;; --------------------------------------------------------------------------
 (defn -main
-  "I don't do a whole lot ... yet."
+  "Entry point for Gridworld and getting started with BURLAP."
   [& args]
-  (println "Hello, World!"))
+  (println "Hello, Gridworld!"))
