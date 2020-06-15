@@ -29,4 +29,4 @@ FIXME: listing of options this app accepts.
 Copyright © 2020 Dennis J. Drown
 
 This program and the accompanying source code and materials are made available under the terms of the
-Apache License, Version 2.0 which is available at https://www.apache.org/licenses/LICENSE-2.0.html.
+Apache License, version 2.0, which is available at https://www.apache.org/licenses/LICENSE-2.0.html.
