@@ -75,19 +75,20 @@
         domain (.generateDomain (doto gw
                                      (.setTf tf)
                                      (.setRf rf)))
-        sg (ConstantStateGenerator. (init-state))
         hashing-factory (SimpleHashableStateFactory.)   ; Hashing system for looking up states
-        q-learn-factory (reify LearningAgentFactory
+        q-learn-factory (reify LearningAgentFactory     ; Factory for Q-learning agent
                           (getAgentName [_]
                             "Q-learning")
                           (generateAgent [_]
                             (QLearning. domain 0.99 hashing-factory 0.3 0.1)))
-        env (SimulatedEnvironment. domain sg)
+        env (SimulatedEnvironment. domain
+                                   (ConstantStateGenerator. (init-state)))
         exp (doto (LearningAlgorithmExperimenter. env 10 100 (into-array [q-learn-factory]))
                   (.setUpPlottingConfiguration 500 250 2 1000
                                                TrialMode/MOST_RECENT_AND_AVERAGE
                                                (into-array [PerformanceMetric/CUMULATIVE_STEPS_PER_EPISODE
                                                             PerformanceMetric/AVERAGE_EPISODE_REWARD])))]
+    ;; Begin the experiment in the simulated learning environment
     (.startExperiment exp)))
 
 
